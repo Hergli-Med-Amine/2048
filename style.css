@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+*::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+body {
+    background-color: #333;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 10rem;
+    height: 100vh;
+    margin: 0;
+    font-size: 7.5vmin;
+    padding-left: 5rem
+}
+
+.lost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 10rem;
+    width: 20rem;
+    background-color: rgba(255, 255, 255, 1);
+    font-family: 'Roboto', sans-serif;
+    border-radius: 1vmin;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    box-shadow: rgba(255, 255, 255, 0.75) 0rem 0rem 0rem 100rem;
+    justify-content: center;
+    z-index: 1;
+}
+
+.animate {
+    animation: shadowa 0.5s linear;
+}
+
+#menu {
+    background-color: #ccc;
+    height: 90%;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 1vmin;
+    z-index: 2;
+}
+
+#menu h1 {
+    font-size: 4rem;
+    color: #333;
+}
+
+#restart, #leaderboard, #savescore {
+    border: none;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    padding: 1rem;
+    color: #333;
+    background-color: #aaa;
+    border-radius: 1vmin;
+    width: 70%;
+    
+}
+
+#score {
+    color: #333;
+    margin-bottom: 4rem;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-size), var(--cell-size)) ;
+    grid-template-rows: repeat(var(--grid-size), var(--cell-size)) ;
+    background-color: #ccc;
+    gap: var(--cell-gap);
+    border-radius: 1vmin;
+    padding: var(--cell-gap);
+    position: relative;
+}
+
+.savescorepage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 90%;
+    width: 40rem;
+    background-color: rgba(255, 255, 255, 1);
+    font-family: 'Roboto', sans-serif;
+    border-radius: 1vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: rgba(255, 255, 255, 0.75) 0rem 0rem 0rem 100rem;
+    justify-content: center;
+    z-index: 3;
+}
+
+#savescorepage p {
+    font-size: 3rem ;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+#savescorepage .submit {
+    border: none;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    padding: 1rem;
+    color: #333;
+    background-color: #aaa;
+    border-radius: 1vmin;
+    width: 20%;
+    margin-top: 2rem;
+}
+
+#nameInput {
+    border: none;
+    font-family: 'Roboto', sans-serif;
+    background-color: #aaa;
+    width: 60%;
+    height: 5rem;
+    font-size: 3rem;
+    text-align: center;
+    border-radius: 1vmin;
+    color: #333;
+}
+
+#nameInput:focus {
+    outline: none;
+}
+
+#restart:focus, #leaderboard:focus, #savescore:focus {
+    outline: none;
+}
+
+#leaderboardpage p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #333;
+}
+
+.leaderboardpage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 90%;
+    width: 40rem;
+    background-color: rgba(255, 255, 255, 1);
+    font-family: 'Roboto', sans-serif;
+    border-radius: 1vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: rgba(255, 255, 255, 0.75) 0rem 0rem 0rem 100rem;
+    justify-content: flex-start;
+    z-index: 3;
+}
+
+.score_grid {
+    display: grid;
+    width: 80%;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.score_grid div {
+    margin-bottom: 1rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #333;
+    background-color: #aaa;
+    padding: 1rem;
+}
+
+.score_grid div:nth-child(odd) {
+    border-radius: 1vmin 0vmin 0vmin 1vmin;
+}
+
+.score_grid div:nth-child(even) {
+    border-radius: 0vmin 1vmin 1vmin 0vmin;
+}
+
+
+.cell {
+    background-color: #aaa;
+    border-radius: 1vmin;
+}
+
+.tile {
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border-radius: 1vmin;
+    top: calc(var(--y) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+    left: calc(var(--x) * (var(--cell-size) + var(--cell-gap)) + var(--cell-gap));
+    font-weight: bold;
+    background-color: hsl(0, 50%, var(--background-lightness));
+    color: hsl(200, 25%, var(--text-lightness));
+    animation: show 200ms ease-in-out;
+    transition: 100ms ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+
+#restart:active, #leaderboard:active, #savescore:active, #savescorepage .submit:active {
+    background-color: #333;
+    color: #ccc;
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+
+
+@keyframes show {
+    0% {
+        opacity: .5;
+        transform: scale(0);
+    }
+}
+
+@keyframes shadowa{
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" type="module"></script>
+</head>
+<body>
+    <div id="menu">
+        <h1>score: </h1>
+        <div id="score"></div>
+        <button id="savescore">save score</button>
+        <button id="leaderboard">leaderboard</button>
+        <button id="restart" onclick="window.location.reload()">restart</button>
+    </div>
+    <div id="game-board"></div>
+    <div class="lost hidden">You Lost!</div>
+    <div id="savescorepage" class="hidden savescorepage">
+        <p>Enter Name</p>
+        <input type="text" id="nameInput">
+        <button class="submit">Save</button>
+    </div>
+    <div id="leaderboardpage" class="hidden leaderboardpage">
+        <p>Leaderboard</p>
+        <div class="score_grid">
+
+        </div>
+    </div>
+</body>
+</html>
