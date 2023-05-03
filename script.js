@@ -60,7 +60,7 @@ buttonsubmit.addEventListener("click" , () => {
 })
 
 function loadLeaderboard() {
-    var isfirst = true
+    var isfirst = false
     getCookie().forEach(element => {
         if(isfirst == false) {
             const ndiv = document.createElement("div")
